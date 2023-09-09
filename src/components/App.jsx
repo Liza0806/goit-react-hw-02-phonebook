@@ -58,11 +58,11 @@ isNameUnique = (name) => {
   return this.state.contacts.find((contact) => contact.name === name);
 };
 
-      
+
   render (){
    
   return (
-    <div>
+  <div style={{ width: '400px', margin: '0 auto',padding: '10px', border: '1px solid blue' }}>
 
       <Form onSubmit={this.formSubmitHandler} isUnic={this.isNameUnique}/>
       <SearchContact onChange={this.searchHendler}/>
