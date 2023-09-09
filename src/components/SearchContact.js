@@ -4,7 +4,7 @@ import {
     FormContainerDiv,
     Label,
     Input,
-} from "./FormStyled.js";
+} from "./Form/Form.styled.jsx";
 
 export class SearchContact extends Component {
  

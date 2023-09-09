@@ -1,8 +1,8 @@
 import React, { Component} from "react";
 import { nanoid } from 'nanoid'
-import { ContactsRender } from "./ContactsRender";
+import { ContactsRender } from "./ContactRender/ContactsRender";
 import { SearchContact} from "./SearchContact"
-import { Form } from "./Form";
+import { Form } from "./Form/Form";
 
 
 export class App extends Component  { 
@@ -53,13 +53,18 @@ handleDeleteContact = (id) => {
     };
   });
 };
+
+isNameUnique = (name) => {
+  return this.state.contacts.find((contact) => contact.name === name);
+};
+
       
   render (){
    
   return (
     <div>
 
-      <Form onSubmit={this.formSubmitHandler} contacts={this.state.contacts}/>
+      <Form onSubmit={this.formSubmitHandler} isUnic={this.isNameUnique}/>
       <SearchContact onChange={this.searchHendler}/>
      <ContactsRender contacts={this.filteredContacts()} onDeleteContact={this.handleDeleteContact} />
  

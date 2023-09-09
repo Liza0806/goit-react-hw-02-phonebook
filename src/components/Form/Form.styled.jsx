@@ -3,11 +3,11 @@ import { styled } from 'styled-components';
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  max-width: 400px;
   margin: 0 auto;
 `;
 export const FormContainerDiv = styled.div`
-  max-width: 300px;
+  max-width: 400px;
   margin: 0 auto;
 `;
 export const Label = styled.label`

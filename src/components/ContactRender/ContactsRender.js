@@ -3,7 +3,7 @@ import {ContactsList,
        ContactItem,
        ContactName,
        ContactNumber,
-       DeleteButton} from "./ContactsRenderStyled.js"
+       DeleteButton} from "./ContactsRender.styled.jsx"
 
 export const ContactsRender = ({contacts, onDeleteContact }) => {
     return (

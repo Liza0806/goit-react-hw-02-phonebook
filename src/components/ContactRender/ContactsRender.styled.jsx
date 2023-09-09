@@ -6,7 +6,8 @@ export const ContactsList = styled.ul`
 `;
 
 export const ContactItem = styled.li`
-  margin-bottom: 10px;
+  margin: 5px auto;
+  max-width: 400px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
