@@ -8,7 +8,7 @@ import {ContactsList,
 export const ContactsRender = ({contacts, onDeleteContact }) => {
     return (
       <ContactsList>
-        {contacts.map(contact => (
+        {contacts && contacts.map(contact => (
           <ContactItem key={contact.id}>
           <ContactName> name: {contact.name},</ContactName><ContactNumber>tel: {contact.number}</ContactNumber>
             <DeleteButton onClick={() => onDeleteContact(contact.id)}>X</DeleteButton>
