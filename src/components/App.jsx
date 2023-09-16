@@ -25,7 +25,9 @@ localStorage.setItem("contacts", JSON.stringify(this.state.contacts))
 componentDidMount (){
   const contacts = localStorage.getItem("contacts")
   const parsedContacts = JSON.parse(contacts)
-  this.setState({contacts: parsedContacts})
+  if (parsedContacts) {
+    this.setState({contacts: parsedContacts})
+  }
 }
 filteredContacts = () => {
     if (this.state.filter.length !== 0){
