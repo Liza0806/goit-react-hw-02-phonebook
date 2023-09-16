@@ -20,8 +20,7 @@ export class App extends Component  {
 componentDidUpdate(prevProps, prevState){
 if(this.state.contacts !== prevState.contacts){
 localStorage.setItem("contacts", JSON.stringify(this.state.contacts))
-}
-}
+}}
 
 componentDidMount (){
   const contacts = localStorage.getItem("contacts")
@@ -34,8 +33,7 @@ filteredContacts = () => {
      contact.name.toLowerCase().includes(this.state.filter.toLowerCase()))}
      else {
      return this.state.contacts
-     }
-   }
+     }}
 
 formSubmitHandler = data =>{
   const newContact = {
@@ -65,7 +63,7 @@ handleDeleteContact = (id) => {
 };
 
 isNameUnique = (name) => {
-  return this.state.contacts.find((contact) => contact.name === name);
+  return this.state.contacts.find((contact) => contact.name.toLowerCase() === name.toLowerCase());
 };
 
 
