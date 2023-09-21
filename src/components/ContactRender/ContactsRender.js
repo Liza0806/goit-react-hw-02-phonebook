@@ -6,7 +6,7 @@ import {ContactsList,
        DeleteButton} from "./ContactsRender.styled.jsx"
 
 export const ContactsRender = ({contacts, onDeleteContact }) => {
-  console.log(contacts)
+  //console.log(contacts)
     return (
       <ContactsList>
         {contacts && contacts.map(contact => (

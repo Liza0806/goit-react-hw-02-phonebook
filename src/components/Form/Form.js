@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
     FormContainer,
     Label,
@@ -6,50 +6,51 @@ import {
     SubmitButton
 } from "./Form.styled.jsx";
 
-export class Form extends Component {
-    state = {
-        name: '',
-        number: '',
-        filter: '',
-    }
-
-    handleChange = event =>{
-        const {name, value} = event.currentTarget
-       // console.log(value)
-        this.setState({[name]: value})
-      }
+export const Form = ({onSubmit, isUnic}) => {
+  
+const [name, setName] = useState("");
+const [number, setNumber] = useState("");
+const handleChange = (event) => {
+  const { name, value } = event.currentTarget;
+  
+  switch (name) {
+    case 'name':
+      setName(value);
+      break;
+    case 'number':
+      setNumber(value);
+      break;
+    default:
+      break;
+  }
+};
     
    
-      handleSubmit = (e) => {
+     const handleSubmit = (e) => {
         e.preventDefault();
-      
-        const { name, number } = this.state;
-      
-        if (this.props.isUnic(name)) {
+        if (isUnic(name)) {
           alert(`${name}" is already in contacts`);
-          this.reset();
+          reset();
           return;
         }
       
-        this.props.onSubmit({ name, number });
-        this.reset();
+        onSubmit(name, number);
+        reset();
       };
 
-    reset =() => {
-this.setState({ name: '',
-number: ''})
+   const reset = () => {
+setName("");
+setNumber("")
     }
-
-    render () {
         return (
-            <FormContainer action="" onSubmit={this.handleSubmit}>
+            <FormContainer action="" onSubmit={handleSubmit}>
 
         <Label> Type name
         <Input
   type="text"
   name="name"
-  value={this.state.name}
-  onChange={this.handleChange}
+  value={name}
+  onChange={handleChange}
   pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
   required
@@ -60,8 +61,8 @@ number: ''})
 <Input
   type="tel"
   name="number"
-  value={this.state.number}
-  onChange={this.handleChange}
+  value={number}
+  onChange={handleChange}
   pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"  title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
   required
 />
@@ -71,5 +72,5 @@ Add contact
 </SubmitButton>
       </FormContainer>
         )
-    }
+    
 }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import {
     FormContainerDiv,
@@ -6,22 +6,22 @@ import {
     Input,
 } from "./Form/Form.styled.jsx";
 
-export class SearchContact extends Component {
+export const SearchContact =({onChange}) => {
  
-  findContact = (event) => {
-    this.props.onChange({
+  const findContact = (event) => {
+    onChange({
       filter: event.target.value.toLowerCase(),
     });
   };
 
-  render() {
+  
     return (
       <FormContainerDiv>
         <Label>Search contact:</Label>
-        <Input type="text" onChange={this.findContact} />
+        <Input type="text" onChange={findContact} />
       </FormContainerDiv>
     );
-  }
+  
 }
 SearchContact.propTypes = {
     onChange: PropTypes.func.isRequired,
